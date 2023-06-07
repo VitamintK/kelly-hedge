@@ -62,12 +62,10 @@ export default function Home() {
   });
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget
-    console.log(name, value);
     const valueNum = Number(value);
     setData(prevState => ({ ...prevState, [name]: valueNum }));
   }
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e);
     const {potentialWin, netWorth, trueOdds, hedgeOdds} = data;
     // const n = 10000; // net worth
     // const w = 1000; // original potential win
@@ -82,7 +80,6 @@ export default function Home() {
     return get_hedge_amount_plus(nw, potentialWin, trueOdds, hedgeOdds);
   });
   const chartData = XVALS.map((x, i) => ({x:x, y:yvals[i]}));
-  console.log(chartData);
 
   return (
     <div className='p-8'>
@@ -103,13 +100,16 @@ export default function Home() {
               data: chartData,
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
+              borderWidth: 5,
               tension: 0.1
             }],
           }}
           options={{
-            title: {
-              display: true,
-              text: 'Hedge Amount vs Starting Net Worth'
+            plugins: {
+              title: {
+                display: true,
+                text: 'Hedge Amount vs Starting Net Worth'
+              },
             },
             scales: {
               x: {
@@ -132,6 +132,7 @@ export default function Home() {
 
 
       </div>
+      <div><a href="https://github.com/VitamintK/kelly-hedge">https://github.com/VitamintK/kelly-hedge</a></div>
     </div>
   );
 }
