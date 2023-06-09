@@ -55,10 +55,10 @@ const Input = (props: InputProps) => {
 export default function Home() {
   const [answer, setAnswer] = React.useState<number>(0);
   const [data, setData] = React.useState<{ [x: string]: number }>({
-    potentialWin: 0,
-    netWorth: 0,
-    trueOdds: 0,
-    hedgeOdds: 0,
+    potentialWin: 4000,
+    netWorth: 100000,
+    trueOdds: 0.3,
+    hedgeOdds: 0.715,
   });
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget
